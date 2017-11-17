@@ -1,0 +1,6 @@
+{
+    "packages": [
+        { "path": "lib/database-access-generator", "repository": "ssh://git@gitlab.gwrk.pl:3105/GW/database-access-generator.git" }
+    ]
+}
+

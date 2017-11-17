@@ -1,0 +1,31 @@
+{
+    "name": "bronek/subpackager",
+    "description": "SubPackager based on git subtree split",
+    "type": "project",
+    "require": {
+        "php": "^7.1",
+        "roave/security-advisories": "dev-master",
+        "symfony/console": "^3.3",
+        "symfony/process": "^3.3",
+        "mnapoli/silly": "^1.6",
+        "php-di/php-di": "^5.4"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^6.4"
+    },
+    "bin": [
+        "bin/subpackager"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Bronisław Białek",
+            "email": "after89@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Bronek\\SubPackager\\": "src/"
+        }
+    }
+}
