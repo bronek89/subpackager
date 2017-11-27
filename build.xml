@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project name="SubPackager" default="check">
+
+    <target name="check" depends="
+		composer-validate,
+		composer-install,
+		tests
+	"/>
+
+    <target name="composer-validate">
+        <exec
+                executable="composer"
+                logoutput="true"
+                passthru="true"
+                checkreturn="true"
+        >
+            <arg value="validate"/>
+        </exec>
+    </target>
+
+    <target name="composer-install">
+        <exec
+                executable="composer"
+                logoutput="true"
+                passthru="true"
+                checkreturn="true"
+        >
+            <arg value="install"/>
+        </exec>
+    </target>
+
+    <target name="tests">
+        <exec
+                executable="vendor/bin/phpunit"
+                logoutput="true"
+                passthru="true"
+                checkreturn="true"
+        >
+            <arg value="-c"/>
+            <arg value="phpunit.xml"/>
+            <arg path="tests"/>
+        </exec>
+    </target>
+
+</project>

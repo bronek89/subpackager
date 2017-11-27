@@ -1,0 +1,6 @@
+{
+    "packages": [
+        { "path": "lib/one", "repository": "../remotes/one" },
+        { "path": "lib/two", "repository": "../remotes/two" }
+    ]
+}

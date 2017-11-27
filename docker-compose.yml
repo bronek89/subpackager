@@ -2,12 +2,11 @@ version: "2"
 
 services:
   develop:
-    image: docker.gwrk.pl:5043/develop71
+    build: docker/console
     volumes:
       - ./:/var/www
-      - ./data/nothing:/var/www/data
-      - ~/.ssh/id_rsa:/home/gowork/.ssh/id_rsa
-      - ~/.ssh/id_rsa.pub:/home/gowork/.ssh/id_rsa.pub
-      - ./zsh_history:/home/gowork/.zsh_history
-      - ~/.gitconfig:/home/gowork/.gitconfig
-      - ~/.ssh/known_hosts:/home/gowork/.ssh/known_hosts
+      - ~/.ssh/id_rsa:/home/subpackager/.ssh/id_rsa
+      - ~/.ssh/id_rsa.pub:/home/subpackager/.ssh/id_rsa.pub
+      - ./zsh_history:/home/subpackager/.zsh_history
+      - ~/.gitconfig:/home/subpackager/.gitconfig
+      - ~/.ssh/known_hosts:/home/subpackager/.ssh/known_hosts

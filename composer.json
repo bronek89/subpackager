@@ -4,14 +4,15 @@
     "type": "project",
     "require": {
         "php": "^7.1",
-        "roave/security-advisories": "dev-master",
-        "symfony/console": "^3.3",
-        "symfony/process": "^3.3",
+        "symfony/console": "^3.3 | ^4.0",
+        "symfony/process": "^3.3 | ^4.0",
         "mnapoli/silly": "^1.6",
         "php-di/php-di": "^5.4"
     },
     "require-dev": {
-        "phpunit/phpunit": "^6.4"
+        "phpunit/phpunit": "^6.4",
+        "symfony/filesystem": "^3.3 | ^4.0",
+        "phing/phing": "^2.16"
     },
     "bin": [
         "bin/subpackager"
@@ -26,6 +27,11 @@
     "autoload": {
         "psr-4": {
             "Bronek\\SubPackager\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "tests\\Bronek\\SubPackager\\": "tests/"
         }
     }
 }

@@ -18,9 +18,9 @@ final class UpdateCommand
         $this->responder = $responder;
     }
 
-    public function __invoke(?string $from, string $formatterName, OutputInterface $output): void
+    public function __invoke(?string $from, string $formatter, OutputInterface $output): void
     {
-        $formatter = $this->responder->useFormatter($formatterName);
-        $formatter->format($output, $this->update->update($from));
+        $formatterObj = $this->responder->useFormatter($formatter);
+        $formatterObj->format($output, $this->update->update($from));
     }
 }

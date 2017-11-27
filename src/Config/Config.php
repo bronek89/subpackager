@@ -1,8 +1,6 @@
 <?php
 
-namespace Bronek\SubPackager;
-
-use Bronek\SubPackager\Config\Json;
+namespace Bronek\SubPackager\Config;
 
 final class Config
 {

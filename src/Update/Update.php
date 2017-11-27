@@ -2,7 +2,7 @@
 
 namespace Bronek\SubPackager\Update;
 
-use Bronek\SubPackager\Config;
+use Bronek\SubPackager\Config\Config;
 use Bronek\SubPackager\Git\Git;
 
 final class Update

@@ -18,19 +18,11 @@ final class GitHandle
         if (!file_exists($this->location.'/.git')) {
             throw new \RuntimeException(sprintf('Location %s is not valid git repository.', $location));
         }
-
-        $this->run('fetch');
     }
 
     public function location(): string
     {
         return $this->location;
-    }
-
-    public function checkout(string $branch): void
-    {
-        $this->run('checkout', $branch);
-        $this->run('reset', '--hard', 'origin/'.$branch);
     }
 
     public function fileContents(string $filename): string
@@ -68,10 +60,11 @@ final class GitHandle
             );
         }
 
-        return $process->getOutput();
+        return trim($process->getOutput());
     }
 
     public function currentCommit(): string
     {
+        return $this->run('rev-parse', 'HEAD');
     }
 }

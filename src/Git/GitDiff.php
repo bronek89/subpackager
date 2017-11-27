@@ -17,7 +17,7 @@ final class GitDiff
      */
     public function between(string $from, string $to): array
     {
-        $result = $this->gitHandle->run('diff', $from, ' ', $to, '--name-only', '--no-prefix');
+        $result = $this->gitHandle->run('diff', $from, $to, '--name-only', '--no-prefix');
 
         return array_map('trim', explode("\n", $result));
     }

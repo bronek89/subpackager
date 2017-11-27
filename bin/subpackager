@@ -6,7 +6,6 @@ use Bronek\SubPackager\Update\UpdateCommand;
 
 foreach (array(__DIR__ . '/../../autoload.php', __DIR__ . '/../vendor/autoload.php', __DIR__ . '/vendor/autoload.php') as $file) {
     if (file_exists($file)) {
-        echo $file;
         require_once $file;
         break;
     }
@@ -17,6 +16,6 @@ $container = ContainerFactory::build();
 $app = new Silly\Application();
 $app->useContainer($container, $injectWithTypeHint = true);
 
-$app->command('update [--from=]', UpdateCommand::class);
+$app->command('update [--from=] [--formatter=]', UpdateCommand::class)->defaults(['formatter' => 'text']);
 
 $app->run();
