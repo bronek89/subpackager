@@ -36,8 +36,6 @@
                 passthru="true"
                 checkreturn="true"
         >
-            <arg value="-c"/>
-            <arg value="phpunit.xml"/>
             <arg path="tests"/>
         </exec>
     </target>
