@@ -1,5 +1,7 @@
 # SubPackager
 
+[![Build Status](https://travis-ci.org/bronek89/subpackager.svg?branch=master)](https://travis-ci.org/bronek89/subpackager)
+
 Application for tracking changes in sub-packages residing in one monorepo. Automatically detects changed sub-packages and push subtree split repository to sub-package remote.
 
 ## Usage
