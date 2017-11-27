@@ -49,6 +49,8 @@ class SubtreeSplitTest extends TestCase
         $process = new Process($command, $cwd);
         $process->mustRun();
 
+        echo "in $cwd: " . implode(' ' , $command) . "\n";
+
         $output = $process->getOutput();
 
         return trim($output);
