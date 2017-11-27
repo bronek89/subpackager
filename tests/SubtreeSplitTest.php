@@ -28,8 +28,8 @@ class SubtreeSplitTest extends TestCase
         $this->testDir = './tmp/' . uniqid(mt_rand(), true) . '/';
         $this->filesystem = new Filesystem();
 
-        $this->filesystem->mirror(__DIR__ . '/main-repo', $this->testDir . '/main-repo');
-        $this->filesystem->mirror(__DIR__ . '/remotes', $this->testDir . '/remotes');
+        $this->filesystem->mirror(__DIR__ . '/main-repo', $this->testDir . 'main-repo');
+        $this->filesystem->mirror(__DIR__ . '/remotes', $this->testDir . 'remotes');
 
         $this->onMainRepo('git', 'init');
         $this->onMainRepo('git', 'add', '-A');
