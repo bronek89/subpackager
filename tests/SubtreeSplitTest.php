@@ -25,7 +25,7 @@ class SubtreeSplitTest extends TestCase
 
     function setUp()
     {
-        $this->testDir = '/tmp/' . uniqid(mt_rand(), true) . '/';
+        $this->testDir = './tmp/' . uniqid(mt_rand(), true) . '/';
         $this->filesystem = new Filesystem();
 
         $this->filesystem->mirror(__DIR__ . '/main-repo', $this->testDir . '/main-repo');
