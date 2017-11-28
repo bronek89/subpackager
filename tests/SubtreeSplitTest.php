@@ -33,6 +33,8 @@ class SubtreeSplitTest extends TestCase
 
         $this->onMainRepo('git', 'init');
         $this->onMainRepo('git', 'add', '-A');
+        $this->onMainRepo('git', 'config', 'user.email', 'you@example.com');
+        $this->onMainRepo('git', 'config', 'user.name', 'Me');
         $this->onMainRepo('git', 'commit', '-m', 'Initial commit');
 
         $this->onFirstRemote('git', 'init', '--bare');
@@ -46,7 +48,7 @@ class SubtreeSplitTest extends TestCase
 
     private function onDir(string $cwd, string ...$command): string
     {
-        $process = new Process($command, $cwd);
+        $process = new Process($command, $cwd, ['PWD' => $cwd]);
         $process->mustRun();
 
         echo "in $cwd: " . implode(' ' , $command) . "\n";
