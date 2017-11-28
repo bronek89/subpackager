@@ -1,17 +1,17 @@
 language: php
 php:
-  - 7.1
+#  - 7.1
   - 7.2
-  - master
+#  - master
 
 env:
-  - dependencies=lowest
+#  - dependencies=lowest
   - dependencies=highest
 
 matrix:
   allow_failures:
-    - php: master
-      env: dependencies=lowest
+#    - php: master
+#      env: dependencies=lowest
     - php: master
       env: dependencies=highest
 

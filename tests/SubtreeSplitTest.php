@@ -53,6 +53,8 @@ class SubtreeSplitTest extends TestCase
 
         $output = $process->getOutput();
 
+        echo $output."\n";
+
         return trim($output);
     }
 
