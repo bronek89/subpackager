@@ -54,13 +54,7 @@ class SubtreeSplitTest extends TestCase
         $process = new Process($command, $cwd, ['PWD' => $cwd]);
         $process->mustRun();
 
-        echo "in $cwd: " . implode(' ' , $command) . "\n";
-
-        $output = $process->getOutput();
-
-        echo $output."\n";
-
-        return trim($output);
+        return \trim($process->getOutput());
     }
 
     private function onMainRepo(string ...$command): string
