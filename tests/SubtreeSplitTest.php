@@ -48,12 +48,8 @@ class SubtreeSplitTest extends TestCase
 
     private function onDir(string $cwd, string ...$command): string
     {
-        $process = new Process($command, $cwd, ['PWD' => $cwd]);
-        $process->mustRun();
-
         echo "in $cwd: " . implode(' ' , $command) . "\n";
-
-        $output = $process->getOutput();
+        $output = shell_exec('cd ' . $cwd . ' && ' . implode(' ', $command));
 
         echo $output."\n";
 
