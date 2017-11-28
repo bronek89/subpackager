@@ -74,7 +74,7 @@ class SubtreeSplitTest extends TestCase
 
     private function runUpdate(?string $from = null): array
     {
-        $command = [__DIR__ . '/../bin/subpackager', 'update', '--formatter=json'];
+        $command = ['php ' . __DIR__ . '/../bin/subpackager', 'update', '--formatter=json'];
 
         if ($from) {
             $command[] = '--from=' . $from;
