@@ -25,11 +25,14 @@ class SubtreeSplitTest extends TestCase
 
     function setUp()
     {
-        $this->testDir = '/tmp/' . uniqid(mt_rand(), true) . '/';
+        $this->testDir = '/tmp/' . uniqid(mt_rand(), true);
         $this->filesystem = new Filesystem();
 
-        $this->filesystem->mirror(__DIR__ . '/main-repo', $this->testDir . 'main-repo');
-        $this->filesystem->mirror(__DIR__ . '/remotes', $this->testDir . 'remotes');
+        $this->filesystem->mirror(__DIR__ . '/main-repo', $this->testDir . '/main-repo');
+        $this->filesystem->mirror(__DIR__ . '/remotes', $this->testDir . '/remotes');
+
+        self::assertTrue($this->filesystem->exists(__DIR__ . '/remotes/one'));
+        self::assertTrue($this->filesystem->exists(__DIR__ . '/remotes/two'));
 
         $this->onMainRepo('git', 'init');
         $this->onMainRepo('git', 'add', '-A');
@@ -48,8 +51,12 @@ class SubtreeSplitTest extends TestCase
 
     private function onDir(string $cwd, string ...$command): string
     {
+        $process = new Process($command, $cwd, ['PWD' => $cwd]);
+        $process->mustRun();
+
         echo "in $cwd: " . implode(' ' , $command) . "\n";
-        $output = shell_exec('cd ' . $cwd . ' && ' . implode(' ', $command));
+
+        $output = $process->getOutput();
 
         echo $output."\n";
 
