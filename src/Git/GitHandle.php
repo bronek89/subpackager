@@ -4,7 +4,7 @@ namespace Bronek\SubPackager\Git;
 
 use Bronek\SubPackager\QuietProcessRunner;
 use Symfony\Component\Filesystem\Filesystem;
-use Symfony\Component\Process\ProcessBuilder;
+use Symfony\Component\Process\Process;
 
 final class GitHandle
 {
@@ -48,10 +48,9 @@ final class GitHandle
 
     public function run(string $command, string ...$arguments): string
     {
-        $processBuilder = new ProcessBuilder(array_merge(['git', '--no-pager', $command], $arguments));
-        $processBuilder->setWorkingDirectory($this->location);
+        $process = new Process(array_merge(['git', '--no-pager', $command], $arguments));
+        $process->setWorkingDirectory($this->location);
 
-        $process = $processBuilder->getProcess();
         (new QuietProcessRunner())->run($process);
 
         if (!$process->isSuccessful()) {
