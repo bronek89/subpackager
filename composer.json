@@ -3,7 +3,7 @@
     "description": "SubPackager based on git subtree split",
     "type": "project",
     "require": {
-        "php": "^7.1",
+        "php": "^7.3",
         "symfony/console": "^4.0",
         "symfony/process": "^4.0",
         "mnapoli/silly": "^1.6",
