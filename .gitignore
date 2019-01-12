@@ -2,3 +2,4 @@ vendor
 zsh_history
 .idea
 tmp
+composer.lock
