@@ -23,7 +23,7 @@ class SubtreeSplitTest extends TestCase
     /** @var Filesystem */
     private $filesystem;
 
-    function setUp()
+    function setUp(): void
     {
         $this->testDir = '/tmp/' . uniqid(mt_rand(), true);
         $this->filesystem = new Filesystem();
@@ -44,7 +44,7 @@ class SubtreeSplitTest extends TestCase
         $this->onSecondRemote('git', 'init', '--bare');
     }
 
-    function tearDown()
+    function tearDown(): void
     {
         $this->filesystem->remove($this->testDir);
     }
