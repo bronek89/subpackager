@@ -9,7 +9,12 @@ final class Json
 
     public function __construct(string $json)
     {
-        $this->configuration = \json_decode($json, true);
+        $this->configuration = \json_decode($json, true, 512, JSON_THROW_ON_ERROR);
+    }
+
+    public static function empty(): self
+    {
+        return new self('[]');
     }
 
     /**

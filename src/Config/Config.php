@@ -11,6 +11,12 @@ final class Config
 
     public function read(string $filePath = 'subpackager.json'): Json
     {
-        return new Json(\file_get_contents($filePath));
+        $content = \file_get_contents($filePath);
+
+        if ($content === false) {
+            throw new \RuntimeException(sprintf('Cannot load config file %s', $filePath));
+        }
+
+        return new Json($content);
     }
 }

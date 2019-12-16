@@ -4,6 +4,10 @@ namespace Bronek\SubPackager\Update;
 
 final class Responder
 {
+    /**
+     * @var string[]
+     * @phpstan-var array<string, class-string>
+     */
     private static $formatters = [
         'json' => JsonFormatter::class,
         'text' => TextFormatter::class,

@@ -7,7 +7,7 @@ use Bronek\SubPackager\Config\Package;
 
 final class UpdateResult
 {
-    /** @var Json|null */
+    /** @var Json */
     private $configuration;
 
     /** @var Package[] */
@@ -15,7 +15,7 @@ final class UpdateResult
 
     public function __construct(?Json $json)
     {
-        $this->configuration = $json;
+        $this->configuration = $json ?? Json::empty();
     }
 
     public static function noConfiguration(): UpdateResult

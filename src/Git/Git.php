@@ -4,6 +4,7 @@ namespace Bronek\SubPackager\Git;
 
 final class Git
 {
+    /** @var GitHandle */
     private $handle;
 
     public function open(string $location): Git

@@ -3,10 +3,14 @@
 namespace Bronek\SubPackager;
 
 use DI\ContainerBuilder;
+use DI\Definition\Source\DefinitionSource;
 use Psr\Container\ContainerInterface;
 
 final class ContainerFactory
 {
+    /**
+     * @return string[]|DefinitionSource[]
+     */
     private static function services(): array
     {
         return [];

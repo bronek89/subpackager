@@ -1,6 +1,7 @@
 language: php
 php:
   - 7.3
+  - 7.4
 
 env:
 #  - dependencies=lowest
@@ -20,3 +21,4 @@ before_script:
 
 script:
   - vendor/bin/phing
+  - vendor/bin/phpstan analyze -l 8 src

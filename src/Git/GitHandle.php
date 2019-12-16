@@ -31,7 +31,13 @@ final class GitHandle
             throw new \RuntimeException(sprintf('File %s not found in repository.', $filename));
         }
 
-        return file_get_contents($this->location.'/'.$filename);
+        $contents = file_get_contents($this->location . '/' . $filename);
+
+        if ($contents === false) {
+            throw new \RuntimeException(sprintf('Cannot load file %s', $filename));
+        }
+
+        return $contents;
     }
 
     public function copy(string $path, string $destination): void

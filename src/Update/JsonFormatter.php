@@ -28,6 +28,6 @@ final class JsonFormatter implements Formatter
             ),
         ];
 
-        $output->writeln(\json_encode($data));
+        $output->writeln(\json_encode($data, JSON_THROW_ON_ERROR, 512));
     }
 }
