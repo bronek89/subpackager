@@ -4,9 +4,9 @@
     "type": "project",
     "require": {
         "php": "^7.3",
-        "symfony/console": "^4.0",
-        "symfony/process": "^4.0",
-        "mnapoli/silly": "^1.6",
+        "symfony/console": "^4.3|^5.0",
+        "symfony/process": "^4.3|^5.0",
+        "mnapoli/silly": "^1.7",
         "php-di/php-di": "^6.0"
     },
     "require-dev": {
