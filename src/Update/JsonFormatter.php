@@ -22,6 +22,7 @@ final class JsonFormatter implements Formatter
                         'repository' => $package->repository(),
                         'path' => $package->path(),
                         'pushed' => $result->isPackagePushed($package),
+                        'notModified' => $result->isPackageNotModified($package),
                     ];
                 },
                 $result->packages()

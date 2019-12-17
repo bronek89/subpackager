@@ -13,6 +13,9 @@ final class UpdateResult
     /** @var Package[] */
     private $pushedPackages = [];
 
+    /** @var Package[] */
+    private $notModifiedPackages = [];
+
     public function __construct(?Json $json)
     {
         $this->configuration = $json ?? Json::empty();
@@ -33,6 +36,11 @@ final class UpdateResult
         $this->pushedPackages[] = $package;
     }
 
+    public function markPackageAsNotModified(Package $package): void
+    {
+        $this->notModifiedPackages[] = $package;
+    }
+
     public function hasConfiguration(): bool
     {
         return $this->configuration !== null;
@@ -41,6 +49,11 @@ final class UpdateResult
     public function isPackagePushed(Package $package): bool
     {
         return \in_array($package, $this->pushedPackages, false);
+    }
+
+    public function isPackageNotModified(Package $package): bool
+    {
+        return \in_array($package, $this->notModifiedPackages, false);
     }
 
     /**

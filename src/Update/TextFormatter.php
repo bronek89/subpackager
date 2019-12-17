@@ -17,8 +17,13 @@ final class TextFormatter implements Formatter
 
         $packagesInfo = array_map(
             function (Package $package) use ($result): string {
-                $pushed = $result->isPackagePushed($package);
-                $pushInfo = $pushed ? 'pushed to ' . $package->repository() : 'not pushed';
+                $pushInfo = 'not pushed';
+
+                if ($result->isPackagePushed($package)) {
+                    $pushInfo = 'pushed to ' . $package->repository();
+                } elseif ($result->isPackageNotModified($package)) {
+                    $pushInfo = 'not modified';
+                }
 
                 return sprintf('%s: %s', $package->path(), $pushInfo);
             },

@@ -19,7 +19,7 @@ final class GitDiff
     {
         $result = $this->gitHandle->run('diff', $from, $to, '--name-only', '--no-prefix');
 
-        return array_map('trim', explode("\n", $result));
+        return array_map('trim', explode("\n", trim($result->getOutput())));
     }
 
     public function hasDirectoryChanged(string $directory, string $from, string $to): bool

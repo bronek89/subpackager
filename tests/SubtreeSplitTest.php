@@ -84,20 +84,26 @@ class SubtreeSplitTest extends TestCase
 
         self::assertJson($resultString);
 
-        $result = \json_decode($resultString, true);
+        $result = \json_decode($resultString, true, 512, JSON_THROW_ON_ERROR);
 
         self::assertArrayHasKey('packages', $result);
 
         return $result;
     }
 
-    function test_split()
+    function test_split(): void
     {
         $result = $this->runUpdate();
 
         self::assertCount(2, $result['packages']);
         self::assertTrue($result['packages'][0]['pushed']);
         self::assertTrue($result['packages'][1]['pushed']);
+
+        $result = $this->runUpdate();
+
+        self::assertCount(2, $result['packages']);
+        self::assertFalse($result['packages'][0]['pushed']);
+        self::assertFalse($result['packages'][1]['pushed']);
 
         $this->onMainRepo('touch', 'new_file');
         $this->onMainRepo('git', 'add', '-A');

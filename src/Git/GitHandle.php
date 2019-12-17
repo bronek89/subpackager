@@ -52,7 +52,7 @@ final class GitHandle
         $filesystem->mirror($this->location . '/' . $path, $destination);
     }
 
-    public function run(string $command, string ...$arguments): string
+    public function run(string $command, string ...$arguments): Process
     {
         $process = new Process(array_merge(['git', '--no-pager', $command], $arguments));
         $process->setWorkingDirectory($this->location);
@@ -65,11 +65,11 @@ final class GitHandle
             );
         }
 
-        return trim($process->getOutput());
+        return $process;
     }
 
     public function currentCommit(): string
     {
-        return $this->run('rev-parse', 'HEAD');
+        return trim($this->run('rev-parse', 'HEAD')->getOutput());
     }
 }

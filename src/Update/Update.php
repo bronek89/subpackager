@@ -39,8 +39,13 @@ final class Update
             if (!$from || $gitDiff->hasDirectoryChanged($package->path(), $from, $to)) {
                 $destinationBranch = 'split/' . str_replace('/', '_', $package->path());
                 $gitSubtree->split($package->path(), $destinationBranch);
-                $gitPush->pushBranchTo($destinationBranch, $package->repository());
-                $result->markPackageAsPushed($package);
+                $pushStatus = $gitPush->pushBranchTo($destinationBranch, $package->repository());
+
+                if ($pushStatus === $gitPush::PUSH_OK) {
+                    $result->markPackageAsPushed($package);
+                }
+
+                $result->markPackageAsNotModified($package);
             }
         }
 
